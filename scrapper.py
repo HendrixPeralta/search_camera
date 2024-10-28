@@ -56,3 +56,8 @@ cheap_items = df_clean[df_clean["Price"] < 1500]
 not_so_cheap =df_clean[df_clean["Price"] < 5000]
 not_so_cheap
 
+# %%
+fuji = df_clean[df_clean["Name"].str.contains("富士")|
+                df_clean["Name"].str.contains("Fujifilm")|
+                df_clean["Description"].str.contains("富士")|
+                df_clean["Description"].str.contains("Fujifilm")]
