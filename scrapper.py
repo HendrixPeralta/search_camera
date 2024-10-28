@@ -48,7 +48,8 @@ df
 df_clean  = df[~df["Price"].str.contains("年")]
 df_clean["Price"] = pd.to_numeric(df_clean["Price"])
 
-df_clean = df_clean[~df["Name"].str.contains("iPhone")]
+df_clean = df_clean[~df["Name"].str.contains("iPhone")|
+                    df["Name"].str.contains("スマホ")]
 
 
 cheap_items = df_clean[df_clean["Price"] < 1500]
