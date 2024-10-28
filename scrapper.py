@@ -17,8 +17,6 @@ print(soup)
 
 item_list = soup.find_all("div", class_ = "p-item-content-info")
 
-item_list
-
 # %%
 
 table_titles = ["Name", "Price", "Description", "Link" ] 
@@ -45,3 +43,11 @@ for item in item_list:
     # print(name, price, description, link)
 df    
     
+# %%
+
+df_clean  = df[~df["Price"].str.contains("年")]
+df_clean["Price"] = pd.to_numeric(df_clean["Price"])
+cheap_items = df_clean[df_clean["Price"] < 1500]
+
+not_so_cheap =df_clean[df_clean["Price"] < 5000]
+not_so_cheap
