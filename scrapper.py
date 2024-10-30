@@ -8,7 +8,7 @@ urlNagoya = "https://jmty.jp/aichi/sale-all/g-all/a-459-nagoya?keyword=%E3%82%AB
 urlSuginami = "https://jmty.jp/tokyo/sale-all/g-all/a-270-suginami?keyword=%E3%82%AB%E3%83%A1%E3%83%A9"
 
 
-pageNagoya = requests.get(urlSuginami).text
+pageNagoya = requests.get(urlNagoya).text
 
 soup = BeautifulSoup(pageNagoya, features="html.parser")
 print(soup)
@@ -49,7 +49,10 @@ df_clean  = df[~df["Price"].str.contains("年")]
 df_clean["Price"] = pd.to_numeric(df_clean["Price"])
 
 df_clean = df_clean[~df["Name"].str.contains("iPhone")|
-                    df["Name"].str.contains("スマホ")]
+                    df["Name"].str.contains("スマホ")|
+                    df["Name"].str.contains("Windows")|
+                   df["Name"].str.contains("i5")|
+                   df["Name"].str.contains("ThinkPad")]
 
 
 cheap_items = df_clean[df_clean["Price"] < 1500]
